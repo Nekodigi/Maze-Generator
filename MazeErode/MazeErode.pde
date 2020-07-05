@@ -14,7 +14,7 @@ int debugMode = 0;
 int genIter = 50;
 int solvIter = 2;
 boolean mazeBuilding = true;
-boolean solving = true;//not used
+boolean solving = false;
 
 Spot genCurrent;
 Spot current;
@@ -38,14 +38,9 @@ void draw(){
       mazeGen();
     }
     else if(solving){
-      //A_star();
-      
+      A_star();
     }
   
   
   showAll();
-}
-
-void mousePressed(){
-  mazeErode();
 }

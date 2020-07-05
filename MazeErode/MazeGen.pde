@@ -12,7 +12,6 @@ void mazeGen(){
     }
     else{
       mazeBuilding = false;
-      solving = true;
       println("GENERATE DONE");
     }
   }

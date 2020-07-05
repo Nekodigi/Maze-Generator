@@ -1,3 +1,16 @@
+float heuristic(Spot a, Spot b){
+  switch(heurType){
+    case 0:
+      return (a.i-b.i) * (a.i-b.i) + (a.j-b.j) * (a.j-b.j);//sqr dist
+    case 1:
+      return dist(a.i, a.j, b.i, b.j);//dist
+    case 2:
+      return abs(a.i-b.i) + abs(a.j-b.j);//manhattan dist
+    default:
+      return 1;//no heuristic
+  }
+}
+
 void mazeErode(){
   for(int i = 1; i < cols-1; i++){
     for(int j = 1; j < rows-1; j++){
@@ -20,7 +33,6 @@ void reset(){
 }
 
 void routeReset(){
-  solving = true;
   openSet = new ArrayList<Spot>();
   closedSet = new ArrayList<Spot>();
   path = new ArrayList<Spot>();
