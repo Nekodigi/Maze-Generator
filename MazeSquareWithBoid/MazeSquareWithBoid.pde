@@ -1,12 +1,19 @@
-int w = 100;
+int w = 100;//maze cell size
+float perceptR = w/4;
+float seperateR = w/2;
+float collisionDst = w/2;
+int iter = 10;//boid iteration
 
 int cols, rows;
 Cell[][] grid;
 Cell current;
 ArrayList<Cell> stack = new ArrayList<Cell>();
+ArrayList<Boid> boids = new ArrayList<Boid>();
 
 void setup(){
-  fullScreen(); 
+  //fullScreen();
+  size(1000, 1000);
+  colorMode(HSB, 360, 100, 100, 100);
   cols = floor(width/w);
   rows = floor(height/w);
   grid = new Cell[cols][rows];
@@ -17,6 +24,10 @@ void setup(){
     }
   }
   current = grid[0][0];
+  
+  for(int i = 0; i < 100; i++){
+    boids.add(new Boid());
+  }
 }
 
 void draw(){
@@ -39,9 +50,10 @@ void draw(){
   } else if(stack.size() > 0){
     current = stack.remove(stack.size()-1);
   }
-  
-  ellipse(mouseX, mouseY, 10, 10);
-  int i = mouseX/w;
-  int j = mouseY/w;
-  grid[i][j].highlight();
+  for(int i=0; i<iter; i++){
+  for(Boid boid : boids){
+    boid.update(boids);
+    boid.show();
+  }
+  }
 }
